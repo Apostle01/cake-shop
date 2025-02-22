@@ -55,3 +55,6 @@ def about(request):
 
 def success(request):
     return render(request, 'shop/success.html')
+
+def cancel(request):
+    return render(request, 'shop/cancel.html')
