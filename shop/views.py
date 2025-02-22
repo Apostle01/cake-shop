@@ -1,5 +1,6 @@
 import stripe
 from django.shortcuts import render
+from cart.cart import Cart
 from .models import Cake, Category
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
@@ -50,6 +51,10 @@ def cake_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
     
     return render(request, 'shop/cake_detail.html', {'cake': cake})
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'shop/cart.html', {'cart': cart})
 
 def about(request):
     return render(request, 'shop/about.html')
