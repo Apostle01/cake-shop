@@ -4,6 +4,7 @@ from .models import Cake, Category
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -63,3 +64,6 @@ def shop_home(request):
     categories = Category.objects.all()
     cakes = Cake.objects.all()
     return render(request, 'shop/home.html', {'categories': categories, 'cakes': cakes})
+
+def home(request):
+    return HttpResponse("<h1>Welcome to the Cake Shop!</h1><p>Go to <a href='/shop/'>Shop</a></p>")
