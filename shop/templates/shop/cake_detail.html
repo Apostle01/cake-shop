@@ -1,0 +1,8 @@
+<h1>{{ cake.name }}</h1>
+<img src="{{ cake.image.url }}" alt="{{ cake.name }}">
+<p>{{ cake.description }}</p>
+<p>Price: ${{ cake.price }}</p>
+<form action="{% url 'cart:add' cake.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>

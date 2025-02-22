@@ -1,0 +1,8 @@
+<h1>{{ category.name }}</h1>
+<p>{{ category.description }}</p>
+<ul>
+    {% for cake in cakes %}
+        <li><a href="{% url 'cake_detail' cake.id %}">{{ cake.name }}</a> - $
+        {{ cake.price }}</li>
+        {% endfor %}
+</ul>
