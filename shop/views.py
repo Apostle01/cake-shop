@@ -52,3 +52,6 @@ def cake_detail(request, cake_id):
 
 def about(request):
     return render(request, 'shop/about.html')
+
+def success(request):
+    return render(request, 'shop/success.html')
