@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'stripe',
+    'django_bootstrap5',
 ]
 CART_SESSION_ID = 'cart'
 

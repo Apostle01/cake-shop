@@ -49,3 +49,6 @@ def cake_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
     
     return render(request, 'shop/cake_detail.html', {'cake': cake})
+
+def about(request):
+    return render(request, 'shop/about.html')
