@@ -58,3 +58,8 @@ def success(request):
 
 def cancel(request):
     return render(request, 'shop/cancel.html')
+
+def shop_home(request):
+    categories = Category.objects.all()
+    cakes = Cake.objects.all()
+    return render(request, 'shop/home.html', {'categories': categories, 'cakes': cakes})
