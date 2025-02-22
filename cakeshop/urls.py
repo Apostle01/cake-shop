@@ -18,23 +18,17 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('shop/', include('shop.urls')),
-    path('accounts/', include('allauth.urls')),
-    path('cart/', include('cart.urls')),
-    path('cart/', include('cart.urls')),
-]
-urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
 from shop.views import home  # Import the home view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),  # Add this line for the homepage
-    path('shop/', include('shop.urls')),  
-    path('cart/', include('cart.urls')),  
-] 
-      
+    path('shop/', include('shop.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('cart/', include('cart.urls')),
+]
+urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+

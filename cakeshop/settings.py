@@ -48,9 +48,12 @@ INSTALLED_APPS = [
     'cart',
     'stripe',
     'django_bootstrap5',
+    'django-extensions',
 ]
 
 SITE_ID = 1
+LOGIN_REDIRECT_URL = '/shop/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/shop/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -136,8 +139,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = '/shop/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/shop/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
