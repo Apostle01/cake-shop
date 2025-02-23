@@ -23,7 +23,7 @@ from shop.views import home  # Import the home view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),  # Allauth URLs
-    path('shop/', include('shop.urls')),  # Include shop app URLs
+    path('shop/', include('shop.urls', namespace='shop')),  # Include shop app URLs
     path('cart/', include('cart.urls')),  # Include cart app URLs
     path('', home, name='home'),  # Add this line for the homepage    
 ]

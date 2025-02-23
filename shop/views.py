@@ -1,5 +1,5 @@
 import stripe
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from cart.cart import Cart
 from .models import Cake, Category
 from django.conf import settings
@@ -46,7 +46,7 @@ def category_detail(request, category_id):
     return render(request, 'shop/category_detail.html', {'category': category, 'cakes': cakes})
 
 def cake_detail(request, cake_id):
-    cake = Cake.objects.get(id=cake_id)
+    cake = get_object_or_404(Cake, id=cake_id)
     
     return render(request, 'shop/cake_detail.html', {'cake': cake})
 

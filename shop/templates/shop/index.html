@@ -7,16 +7,21 @@
         {% for cake in cakes %}
         <div class="col-md-4 mb-4">
             <div class="cake-card">
-                <img src="{{ cake.image.url }}" alt="{{ cake.name }}">
+                <img src="{{ cake.image.url }}" alt="{{ cake.name }}" class="img-fluid">
                 <div class="card-body">
                     <h5 class="card-title">{{ cake.name }}</h5>
                     <p class="card-text">{{ cake.description }}</p>
                     <p class="card-text">${{ cake.price }}</p>
+                    <!-- Ensure 'shop:cake_detail' is defined in your urls.py -->
                     <a href="{% url 'shop:cake_detail' cake.id %}" class="btn btn-custom">View Details</a>
                 </div>
             </div>
         </div>
         {% endfor %}
+    </div>
+    <!-- Ensure 'shop:index' is defined in your urls.py -->
+    <div class="text-center mt-4">
+        <a href="{% url 'shop:index' %}" class="btn btn-primary">Home</a>
     </div>
 </div>
 {% endblock %}
