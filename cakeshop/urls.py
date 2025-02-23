@@ -22,13 +22,9 @@ from shop.views import home  # Import the home view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),  # Add this line for the homepage
-    path('shop/', include('shop.urls')),
-    path('accounts/', include('allauth.urls')),
-    path('cart/', include('cart.urls')),
+    path('accounts/', include('allauth.urls')),  # Allauth URLs
+    path('shop/', include('shop.urls')),  # Include shop app URLs
+    path('cart/', include('cart.urls')),  # Include cart app URLs
+    path('', home, name='home'),  # Add this line for the homepage    
 ]
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
