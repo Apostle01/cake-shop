@@ -1,23 +1,38 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">Cake Shop</a>
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="{% url 'shop:index' %}">Cake Shop</a>
+
+        <!-- Toggle Button for Mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Navbar Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Home Link -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'shop:index' %}">Home</a>
                 </li>
+
+                <!-- Cart Link -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cart_detail' %}">Cart</a>
+                    <a class="nav-link" href="{% url 'cart:cart_detail' %}">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
                 </li>
             </ul>
+
+            <!-- Authentication Links -->
             <div class="d-flex">
                 {% if user.is_authenticated %}
+                    <!-- Logout Button -->
                     <a href="{% url 'account_logout' %}" class="btn btn-outline-danger">Logout</a>
                 {% else %}
+                    <!-- Login Button -->
                     <a href="{% url 'account_login' %}" class="btn btn-outline-primary">Login</a>
+                    <!-- Signup Button -->
                     <a href="{% url 'account_signup' %}" class="btn btn-outline-success">Sign Up</a>
                 {% endif %}
             </div>
