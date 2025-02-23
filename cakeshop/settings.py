@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'cart',
     'stripe',
     'django_bootstrap5',
-    'django-extensions',
+    'django_extensions',
 ]
 
 SITE_ID = 1
