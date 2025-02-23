@@ -36,10 +36,8 @@ cancel_url=request.build_absolute_uri('/shop/cancel/'),
         return JsonResponse({'error': str(e)})
 
 def index(request):
-    categories = Category.objects.all()
-    cakes = Cake.objects.all()
-    
-    return render(request, 'shop/index.html', {'categories': categories, 'cakes': cakes})
+    cakes = Cake.objects.all()  # Fetch all cakes from the database
+    return render(request, 'shop/index.html', {'cakes': cakes})
 
 def category_detail(request, category_id):
     category = Category.objects.get(id=category_id)
