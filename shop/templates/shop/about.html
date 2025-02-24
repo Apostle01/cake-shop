@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>About Us</h1>
-<p>We are located in Manchester, UK.
-Visit us or order online!
-</p>
+<div class="about-section">
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to the Cake Shop! We specialize in delicious, handmade cakes made with love and the finest ingredients.
+         Our mission is to bring joy to your celebrations with our delightful creations.</p>
+        <p>Founded in 2025, we have been serving the community with passion and dedication. 
+        Whether it's a birthday, wedding, or just a sweet treat, we have the perfect cake for you.</p>
+        <p>We are located in Manchester, UK.
+        Visit us or order online!
+        </p>
+        <a href="{% url 'shop:index' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
 {% endblock %}
