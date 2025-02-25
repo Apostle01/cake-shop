@@ -6,6 +6,9 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from .models import Order, OrderItem
+from django.db.models import Q
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -70,3 +73,25 @@ def shop_home(request):
 
 def home(request):
     return HttpResponse("<h1>Welcome to the Cake Shop!</h1><p>Go to <a href='/shop/'>Shop</a></p>")
+
+@login_required
+def order_list(request):
+    orders = Order.objects.filter(user=request.user)
+    return render(request, 'shop/order_list.html', {'orders': orders})
+
+@login_required
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'shop/order_detail.html', {'order': order})
+
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        cakes = Cake.objects.filter(Q(name__icontains=query) | Q(category__name__icontains=query))
+    else:
+        cakes = Cake.objects.all()
+    return render(request, 'shop/index.html', {'cakes': cakes})
+
+def orderitem_detail(request, orderitem_id):
+    orderitem = get_object_or_404(OrderItem, id=orderitem_id)
+    return render(request, 'shop/orderitem_detail.html', {'orderitem': orderitem})

@@ -2,42 +2,21 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Your Shopping Cart</h1>
-    {% if cart.items.all %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart.items.all %}
-                    <tr>
-                        <td>{{ item.cake.name }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>${{ item.cake.price }}</td>
-                        <td>${{ item.cake.price|mul:item.quantity }}</td>
-                        <td>
-                            <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remove</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="text-end">
-            <h4>Total: ${{ cart.total_price }}</h4>
-        </div>
-        <div class="text-end mt-3">
-            <a href="{% url 'shop:index' %}" class="btn btn-secondary">Continue Shopping</a>
-            <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
-        </div>
-    {% else %}
-        <p>Your cart is empty.</p>
-        <a href="{% url 'shop:index' %}" class="btn btn-primary">Continue Shopping</a>
-    {% endif %}
+    <h1>Your Cart</h1>
+    <ul>
+        {% for item in cart_items %}
+        <li>
+            {{ item.cake.name }} - ${{ item.cake.price }} x {{ item.quantity }}
+            <form action="{% url 'cart:update_cart' item.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+            </form>
+            <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-sm btn-danger">Remove</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <a href="{% url 'shop:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
 </div>
 {% endblock %}

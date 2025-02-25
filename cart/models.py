@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 from shop.models import Cake  # Import the Cake model from the shop app
 
 class Cart(models.Model):
-    session_key = models.CharField(max_length=40, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -12,7 +14,9 @@ class Cart(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        return f"Cart {self.id} (Created: {self.created_at})"
+        if self.user:
+            return f"Cart for {self.user.username}"
+        return f"Cart for session {self.session_key}"
 
     @property
     def total_price(self):
