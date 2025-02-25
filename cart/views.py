@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Cart, CartItem, OrderItem
+from .models import Cart, CartItem
 from shop.models import Cake
 
 # Helper function to get or create a cart for the user
@@ -37,7 +37,7 @@ def remove_from_cart(request, cart_item_id):
     return redirect('cart:cart_detail')
 
 def update_cart(request, cart_item_id):
-    cart_item = get_object_or_404(CartItem, id=cart_item_id)
+    cart_item = get_object_or_404(CartItem, id=cart_item_id, cart__user=request.user)
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity'))
         if quantity > 0:

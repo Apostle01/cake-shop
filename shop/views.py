@@ -95,3 +95,8 @@ def search(request):
 def orderitem_detail(request, orderitem_id):
     orderitem = get_object_or_404(OrderItem, id=orderitem_id)
     return render(request, 'shop/orderitem_detail.html', {'orderitem': orderitem})
+
+@login_required
+def checkout(request):
+    # Add your checkout logic here
+    return render(request, 'shop/checkout.html')
