@@ -1,11 +1,36 @@
-{% extends 'base.html' %}
+<!-- templates/account/signup.html -->
+{% extends "base.html" %}
 
 {% block content %}
 <div class="container mt-4">
     <h1>Sign Up</h1>
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
     <form method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="mb-3">
+            <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+            {{ form.username }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+            {{ form.password1 }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+            {{ form.password2 }}
+        </div>
         <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
     <p class="mt-3">
