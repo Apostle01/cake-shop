@@ -62,6 +62,9 @@ ACCOUNT_RATE_LIMITS = {
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_SESSION_REMEMBER = True
 
+# Redirect users to the home page after login
+LOGIN_REDIRECT_URL = 'home'  # Name of the home URL pattern
+
 # Authentication backends
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

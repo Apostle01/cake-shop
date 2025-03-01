@@ -75,6 +75,10 @@ def home(request):
     return HttpResponse("<h1>Welcome to the Cake Shop!</h1><p>Go to <a href='/shop/'>Shop</a></p>")
 
 @login_required
+def profile(request):
+    return render(request, 'account/profile.html')
+
+@login_required
 def order_list(request):
     orders = Order.objects.filter(user=request.user)
     return render(request, 'shop/order_list.html', {'orders': orders})

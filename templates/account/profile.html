@@ -1,0 +1,10 @@
+<!-- templates/account/profile.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Profile</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <p>Email: {{ user.email }}</p>
+</div>
+{% endblock %}

@@ -12,4 +12,5 @@ urlpatterns = [
     path('orderitem/<int:orderitem_id>/', views.orderitem_detail, name='orderitem_detail'),
     path('search/', views.search, name='search'),
     path('checkout/', views.checkout, name='checkout'),
+    path('accounts/profile/', views.profile, name='profile'),
 ]
