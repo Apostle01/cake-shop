@@ -5,7 +5,11 @@
     <div class="row">
         <!-- Cake Image -->
         <div class="col-md-6">
-            <img src="{{ cake.image.url }}" alt="{{ cake.name }}" class="img-fluid rounded">
+            {% if cake.image %}
+                <img src="{{ cake.image.url }}" alt="{{ cake.name }}" class="img-fluid rounded">
+            {% else %}
+                <img src="{{ MEDIA_URL }}default.jpg" alt="Default Image" class="img-fluid rounded">
+            {% endif %}
         </div>
 
         <!-- Cake Details -->
@@ -24,13 +28,31 @@
         </div>
     </div>
 
+    <!-- Add Cake Form (Optional) -->
+    {% if user.is_staff or user.is_superuser %}  <!-- Only show form to staff or superusers -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Add a New Cake</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Add Cake</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Related Cakes (Optional) -->
     <div class="row mt-5">
         <h2>You Might Also Like</h2>
         {% for related_cake in related_cakes %}
         <div class="col-md-4 mb-4">
             <div class="cake-card">
-                <img src="{{ related_cake.image.url }}" alt="{{ related_cake.name }}" class="card-img-top">
+                {% if related_cake.image %}
+                    <img src="{{ related_cake.image.url }}" alt="{{ related_cake.name }}" class="card-img-top">
+                {% else %}
+                    <img src="{{ MEDIA_URL }}default.jpg" alt="Default Image" class="card-img-top">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ related_cake.name }}</h5>
                     <p class="card-text">{{ related_cake.description }}</p>

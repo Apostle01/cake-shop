@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from shop.models import Cake  # Replace with your product model
 from .cart import Cart  # Import the Cart class
-from .forms import CartAddProductForm  # Import the form
+from .forms import CartAddProductForm, CakeForm   # Import the form
 
 def cart_detail(request):
     """
@@ -35,3 +35,13 @@ def cart_remove(request, cake_id):
     cake = get_object_or_404(Cake, id=cake_id)
     cart.remove(cake)
     return redirect('cart:cart_detail')
+
+def add_cake(request):
+    if request.method == 'POST':
+        form = CakeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('shop:index')
+    else:
+        form = CakeForm()
+    return render(request, 'shop/add_cake.html', {'form': form})

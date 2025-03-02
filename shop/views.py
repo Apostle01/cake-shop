@@ -89,6 +89,11 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'shop/order_detail.html', {'order': order})
 
+def cake_detail(request, cake_id):
+    cake = get_object_or_404(Cake, id=cake_id)
+    related_cakes = Cake.objects.filter(category=cake.category).exclude(id=cake.id)[:3]  # Example logic
+    return render(request, 'shop/cake_detail.html', {'cake': cake, 'related_cakes': related_cakes})
+
 def search(request):
     query = request.GET.get('q')
     if query:

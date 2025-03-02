@@ -140,8 +140,10 @@ USE_TZ = True
 # Static and media files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
+
 os.makedirs(STATICFILES_DIRS[0], exist_ok=True)
 os.makedirs(MEDIA_ROOT, exist_ok=True)
 
