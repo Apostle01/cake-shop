@@ -72,7 +72,8 @@ def shop_home(request):
     return render(request, 'shop/home.html', {'categories': categories, 'cakes': cakes})
 
 def home(request):
-    return HttpResponse("<h1>Welcome to the Cake Shop!</h1><p>Go to <a href='/shop/'>Shop</a></p>")
+    cakes = Cake.objects.all()  # Query all products
+    return render(request, 'home.html', {'cakes': cakes})
 
 @login_required
 def profile(request):

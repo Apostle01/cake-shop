@@ -1,0 +1,75 @@
+cakeshop/                  # Root project directory
+├── manage.py              # Django management script
+├── db.sqlite3             # SQLite database (created after migrations)
+├── requirements.txt       # Python dependencies
+├── venv/                  # Virtual environment (if using one)
+│
+├── cakeshop/              # Main project directory (settings, URLs, etc.)
+│   ├── __init__.py
+│   ├── settings.py        # Django settings
+│   ├── urls.py            # Main URL configuration
+│   ├── wsgi.py            # WSGI configuration for deployment
+│   └── asgi.py            # ASGI configuration for async deployment
+│
+├── shop/                  # Shop app (products, categories, etc.)
+│   ├── migrations/        # Database migrations
+│   │   └── __init__.py
+│   ├── templates/         # Shop-specific templates
+│   │   └── shop/
+│   │       ├── home.html  # Home page template
+│   │       ├── product_detail.html  # Product detail template
+│   │       └── ...
+│   ├── __init__.py
+│   ├── admin.py           # Admin configuration
+│   ├── apps.py            # App configuration
+│   ├── models.py          # Models (e.g., Cake, Category)
+│   ├── tests.py           # Unit tests
+│   ├── urls.py            # Shop-specific URLs
+│   └── views.py           # Shop views (e.g., home, product detail)
+│
+├── cart/                  # Cart app (shopping cart functionality)
+│   ├── migrations/        # Database migrations
+│   │   └── __init__.py
+│   ├── templates/         # Cart-specific templates
+│   │   └── cart/
+│   │       ├── cart_detail.html  # Cart detail template
+│   │       └── ...
+│   ├── __init__.py
+│   ├── admin.py           # Admin configuration
+│   ├── apps.py            # App configuration
+│   ├── models.py          # Models (e.g., Cart, CartItem)
+│   ├── tests.py           # Unit tests
+│   ├── urls.py            # Cart-specific URLs
+│   └── views.py           # Cart views (e.g., add_to_cart, cart_detail)
+│
+├── accounts/              # Accounts app (user authentication, profiles)
+│   ├── migrations/        # Database migrations
+│   │   └── __init__.py
+│   ├── templates/         # Accounts-specific templates
+│   │   └── account/
+│   │       ├── signup.html  # Signup template
+│   │       ├── login.html   # Login template
+│   │       ├── profile.html # Profile template
+│   │       └── ...
+│   ├── __init__.py
+│   ├── admin.py           # Admin configuration
+│   ├── apps.py            # App configuration
+│   ├── models.py          # Custom user model (if needed)
+│   ├── tests.py           # Unit tests
+│   ├── urls.py            # Accounts-specific URLs
+│   └── views.py           # Accounts views (e.g., profile)
+│
+├── static/                # Static files (CSS, JS, images)
+│   ├── css/
+│   │   └── style.css      # Custom CSS
+│   ├── js/
+│   │   └── script.js      # Custom JavaScript
+│   └── images/            # Static images (e.g., logos, icons)
+│
+├── media/                 # Media files (user-uploaded images)
+│   └── cakes/             # Product images
+│
+└── templates/             # Global templates
+    ├── base.html          # Base template
+    ├── navbar.html        # Navigation bar
+    └── footer.html        # Footer
