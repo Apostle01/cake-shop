@@ -25,6 +25,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # Allauth URLs
     path('shop/', include('shop.urls', namespace='shop')),  # Include shop app URLs
     path('cart/', include('cart.urls', namespace='cart')),  # Include cart app URLs
-    path('', home, name='home'),  # Add this line for the homepage    
+    path('', home, name='home'),  # Add this line for the homepage
+    path('', include('shop.urls')),    
 ]
-urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
