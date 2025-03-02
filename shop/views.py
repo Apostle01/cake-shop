@@ -66,14 +66,14 @@ def success(request):
 def cancel(request):
     return render(request, 'shop/cancel.html')
 
-def shop_home(request):
-    categories = Category.objects.all()
-    cakes = Cake.objects.all()
-    return render(request, 'shop/home.html', {'categories': categories, 'cakes': cakes})
+# def shop_home(request):
+#     categories = Category.objects.all()
+#     cakes = Cake.objects.all()
+#     return render(request, 'shop/home.html', {'categories': categories, 'cakes': cakes})
 
 def home(request):
     cakes = Cake.objects.all()  # Query all products
-    return render(request, 'home.html', {'cakes': cakes})
+    return render(request, 'shop/home.html', {'cakes': cakes})
 
 @login_required
 def profile(request):
