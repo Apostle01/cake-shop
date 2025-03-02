@@ -8,4 +8,4 @@ class CartAddProductForm(forms.Form):
 class CakeForm(forms.ModelForm):
     class Meta:
         model = Cake
-        fields = ['name', 'image', 'price', 'category']
+        fields = ['name', 'description', 'price', 'image', 'category']  # Include 'category' here i
