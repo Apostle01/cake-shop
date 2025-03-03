@@ -57,7 +57,7 @@
                     <h5 class="card-title">{{ related_cake.name }}</h5>
                     <p class="card-text">{{ related_cake.description }}</p>
                     <p class="card-text">${{ related_cake.price }}</p>
-                    <a href="{% url 'cake_detail' related_cake.id %}" class="btn btn-custom">View Details</a>
+                    <a href="{% url 'shop:cake_detail' related_cake.id %}" class="btn btn-custom">View Details</a>
                 </div>
             </div>
         </div>

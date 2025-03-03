@@ -19,6 +19,7 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 from shop.views import home  # Import the home view
+from cart import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,8 @@ urlpatterns = [
     path('another-shop/', include('shop.urls', namespace='another_shop')),  # Unique namespace
     path('cart/', include('cart.urls', namespace='cart')),  # Include cart app URLs
     path('', home, name='home'),  # Add this line for the homepage
-    path('', include('shop.urls')),    
+    path('', include('shop.urls')),
+    path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),    
 ]
 
 if settings.DEBUG:

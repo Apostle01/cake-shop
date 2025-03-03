@@ -45,3 +45,16 @@ def add_cake(request):
     else:
         form = CakeForm()
     return render(request, 'shop/add_cake.html', {'form': form})
+
+def add_to_cart(request, product_id):
+    cake = get_object_or_404(Cake, id=product_id)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        # Add the product to the cart
+        quantity = form.cleaned_data['quantity']
+        override = form.cleaned_data['override']
+        # Your logic to add the product to the cart
+        # Example: request.session['cart'] = {...}
+        return redirect('cart:cart_detail')  # Redirect to the cart detail page
+    # Handle invalid form case
+    return redirect('shop:index')

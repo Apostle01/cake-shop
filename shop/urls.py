@@ -13,6 +13,6 @@ urlpatterns = [
     path('orderitem/<int:orderitem_id>/', views.orderitem_detail, name='orderitem_detail'),
     path('search/', views.search, name='search'),
     path('checkout/', views.checkout, name='checkout'),
-    path('create-checkout-session_session/', views.create_checkout_session_session, name='create-checkout-session-session'),
+    path('create-checkout-session/', views.create_checkout_session, name='create-checkout-session'),
     path('accounts/profile/', views.profile, name='profile'),
 ]
